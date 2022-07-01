@@ -5,6 +5,10 @@ default: &default
 
 development:
   <<: *default
+  host: localhost
+  database: cr-telegram-demo
+  user: postgres
+  password: teste1
 
 production:
   <<: *default
