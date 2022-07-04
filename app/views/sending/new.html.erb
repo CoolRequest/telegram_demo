@@ -1,0 +1,13 @@
+<h1>Sending Messages</h1>
+
+<p>
+Enter your message below to have the bot send it to you on the telegram chat
+</p>
+
+<%= form_with url: '/sending' do |form| %>
+
+<%= form.text_area :message %>
+
+<%= form.submit %>
+
+<% end %>

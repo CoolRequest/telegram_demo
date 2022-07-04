@@ -4,10 +4,16 @@ class TelegramController < ActionController::API
   def webhook
     # whenever someone sends a message to the bot, this action gets called
     logger.info 'received message'
-    if params[:message][:text] == 'hello'
+    chat_id = params[:message][:chat][:id]
+    text = params[:message][:text]
+    if text == 'hello'
       logger.info 'sending reply'
-      chat_id = params[:message][:chat][:id]
       send_message chat_id, "Your chat id is #{chat_id}"
+    else
+      logger.info 'saving message'
+      r = Received.find_or_create_by! chat_id: chat_id
+      r.update! text: text, webhook_params: params.to_json
+      send_message chat_id, "Refresh the screen on the demo app to see what was received on the webhook"
     end
   end
 

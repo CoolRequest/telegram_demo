@@ -1,2 +1,14 @@
 <h1>Receiving Messages</h1>
 <p>chat_id = <%= session[:chat_id] %></p>
+
+<p>Send a message to the bot and refresh the screen to see the content below</p>
+
+<p>
+<% if @data.present? %>
+   <pre><%= JSON.pretty_generate(@data) %></pre>
+<% end %>
+</p>
+
+<p>
+<%= link_to 'Next: sending messages', sending_path %>
+</p>
