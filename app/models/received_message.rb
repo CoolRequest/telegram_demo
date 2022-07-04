@@ -1,0 +1,2 @@
+class ReceivedMessage < ApplicationRecord
+end
